@@ -57,18 +57,19 @@ class App extends Component {
       <h1>Welcome {firebase.auth().currentUser.displayName}</h1>
       <h3>Your Email: {firebase.auth().currentUser.email}</h3>
       <img alt='avatar' src={firebase.auth().currentUser.photoURL}></img>
-      <p>Phone Number: {firebase.auth().currentUser.phoneNumber}</p>
+      <p>Phone: {firebase.auth().currentUser.phoneNumber}</p>
       </>
       ) : (
-        <StyledFirebaseAuth 
-        uiConfig={this.uiConfig} 
-        firebaseAuth = {firebase.auth()}/>
+        <StyledFirebaseAuth uiCallback={ui => ui.disableAutoSignIn()} uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
         )}
     </div>
   );
 }
 }
 
+{/* <StyledFirebaseAuth 
+        uiConfig={this.uiConfig} 
+        firebaseAuth = {firebase.auth()}/> */}
 export default App;
 // https://stackoverflow.com/questions/48863485/typeerror-cannot-read-property-googleauthprovider-of-undefined
 // https://stackoverflow.com/questions/48475668/firebaseui-signinsuccess-redirect-in-callback
